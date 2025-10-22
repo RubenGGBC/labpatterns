@@ -1,17 +1,14 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 
 public class Medicament {
 	private String name;
 	private List<Symptom> symptoms=new ArrayList<Symptom>();
-	private SymptomFactory symptomFactory;
+	private Factory symptomFactory;
 
 
 	public String getName() {
@@ -25,7 +22,7 @@ public class Medicament {
 	public Medicament(String name) {
 		super();
 		this.name = name;
-		this.symptomFactory = new ConcreteSymptomFactory();
+		this.symptomFactory = new Factory();
 	}
 
 	public Symptom addSymptomByName(String symptom){

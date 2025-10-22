@@ -1,11 +1,7 @@
 package domain;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Observable;
 import java.util.Set;
 import iterator.Covid19PacientIterator;
 
@@ -13,12 +9,12 @@ public class Covid19Pacient {
 	private String  name; 
 	private int age;
 	private Map<Symptom,Integer> symptoms=new HashMap<Symptom,Integer>();
-	private SymptomFactory symptomFactory;
+	private Factory symptomFactory;
 
 	public Covid19Pacient(String name, int years) {
 		this.name = name;
 		this.age = years;
-		this.symptomFactory = new ConcreteSymptomFactory();
+		this.symptomFactory = new Factory();
 	}
 	
 	public String getName() {

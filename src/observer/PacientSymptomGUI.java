@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import domain.Covid19Pacient;
 import domain.Symptom;
 
 import javax.swing.JLabel;
@@ -43,22 +42,22 @@ public class PacientSymptomGUI extends JFrame {
 		
 		symptomComboBox = new JComboBox<Symptom>();
 		symptomComboBox.setBounds(195, 57, 192, 27);
-		symptomComboBox.addItem(new Symptom("fiebre",100,5));
-		symptomComboBox.addItem(new Symptom("tos seca",100,5));
-		symptomComboBox.addItem(new Symptom("astenia",100,5));
-		symptomComboBox.addItem(new Symptom("expectoracion",100,5));
-		
-		symptomComboBox.addItem(new Symptom("disnea",100,3));
-		symptomComboBox.addItem(new Symptom("dolor de garganta",100,3));
-		symptomComboBox.addItem(new Symptom("cefalea",100,3));
-		symptomComboBox.addItem(new Symptom("mialgia",100,3));
-		symptomComboBox.addItem(new Symptom("escalofríos",100,3));
+        symptomComboBox.addItem(new Symptom("fiebre",100,5));
+        symptomComboBox.addItem(new Symptom("tos seca",100,5));
+        symptomComboBox.addItem(new Symptom("astenia",100,5));
+        symptomComboBox.addItem(new Symptom("expectoracion",100,5));
 
-		symptomComboBox.addItem(new Symptom("náuseas o vómitos",100,1));
-		symptomComboBox.addItem(new Symptom("congestión nasal",100,1));
-		symptomComboBox.addItem(new Symptom("diarrea",100,1));
-		symptomComboBox.addItem(new Symptom("hemoptisis",100,1));
-		symptomComboBox.addItem(new Symptom("congestión conjuntival",100,1));
+        symptomComboBox.addItem(new Symptom("disnea",100,3));
+        symptomComboBox.addItem(new Symptom("dolor de garganta",100,3));
+        symptomComboBox.addItem(new Symptom("cefalea",100,3));
+        symptomComboBox.addItem(new Symptom("mialgia",100,3));
+        symptomComboBox.addItem(new Symptom("escalofrios",100,3));
+
+        symptomComboBox.addItem(new Symptom("nauseas",100,1));
+        symptomComboBox.addItem(new Symptom("congestión nasal",100,1));
+        symptomComboBox.addItem(new Symptom("diarrea",100,1));
+        symptomComboBox.addItem(new Symptom("hemoptisis",100,1));
+        symptomComboBox.addItem(new Symptom("congestion conjuntival",100,1));
 		
 		
 		contentPane.add(symptomComboBox);
@@ -76,11 +75,11 @@ public class PacientSymptomGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				errorLabel.setText(" ");
-				if (new Integer(weightField.getText())<=3) {
+				if (Integer.parseInt(weightField.getText())<=3) {
 		    	System.out.println("Symptom added :"+(Symptom)symptomComboBox.getSelectedItem());
 
-				//addSymptomByName ...
-				
+                p.addSymptomByName(((Symptom)symptomComboBox.getSelectedItem()).getName(), Integer.parseInt(weightField.getText()));
+
 			} else errorLabel.setText("ERROR, Weight between [1..3]");
 				
 			}
@@ -95,8 +94,7 @@ public class PacientSymptomGUI extends JFrame {
 
 		    	System.out.println("Symptom removed :"+(Symptom)symptomComboBox.getSelectedItem());
 
-				//removeSymptomByName...
-				
+                p.removeSymptomByName(((Symptom)symptomComboBox.getSelectedItem()).getName());
 			} 
 		});
 		btnRemoveSymptom.setBounds(255, 202, 147, 29);
