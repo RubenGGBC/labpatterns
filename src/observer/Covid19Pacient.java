@@ -1,7 +1,7 @@
 package observer;
 import java.util.*;
 
-import domain.Factory;
+import factory.Factory;
 import domain.Symptom;
 import iterator.Covid19PacientIterator;
 

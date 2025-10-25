@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+
+import factory.Factory;
 import iterator.Covid19PacientIterator;
 
 public class Covid19Pacient {

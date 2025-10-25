@@ -1,11 +1,24 @@
-package domain;
+package factory;
+
+import domain.DigestiveSymptom;
+import domain.NeuroMuscularSymptom;
+import domain.RespiratorySymptom;
+import domain.Symptom;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Factory {
 
+    private Map<String, Symptom> symptomCache = new HashMap<>();
+
     public Symptom createSymptom(String symptomName) {
+
+        if (symptomCache.containsKey(symptomName)) {
+            return symptomCache.get(symptomName);
+        }
 
         List<String> impact5 = Arrays.asList("fiebre", "tos seca", "astenia","expectoracion");
         List<Double> index5 = Arrays.asList(87.9, 67.7, 38.1, 33.4);
@@ -24,12 +37,18 @@ public class Factory {
         else if (impact3.contains(symptomName)) {impact=3;index= index3.get(impact3.indexOf(symptomName));}
         else if (impact1.contains(symptomName)) {impact=1; index= index1.get(impact1.indexOf(symptomName));}
 
+        Symptom newSymptom = null;
+
         if (impact!=0)  {
-            if (digestiveSymptom.contains(symptomName)) return new DigestiveSymptom(symptomName,(int)index, impact);
-            if (neuroMuscularSymptom.contains(symptomName)) return new NeuroMuscularSymptom(symptomName,(int)index, impact);
-            if (respiratorySymptom.contains(symptomName)) return new RespiratorySymptom(symptomName,(int)index, impact);
+            if (digestiveSymptom.contains(symptomName)) newSymptom =  new DigestiveSymptom(symptomName,(int)index, impact);
+            if (neuroMuscularSymptom.contains(symptomName)) newSymptom = new NeuroMuscularSymptom(symptomName,(int)index, impact);
+            if (respiratorySymptom.contains(symptomName)) newSymptom = new RespiratorySymptom(symptomName,(int)index, impact);
         }
 
-        return null;
+        if (newSymptom != null) {
+            symptomCache.put(symptomName, newSymptom);
+        }
+
+        return newSymptom;
     }
 }

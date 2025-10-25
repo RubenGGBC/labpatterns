@@ -1,5 +1,7 @@
 package domain;
 
+import factory.Factory;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
