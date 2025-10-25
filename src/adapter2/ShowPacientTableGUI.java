@@ -6,20 +6,20 @@ import java.awt.Font;
 import javax.swing.*;
 import javax.swing.table.TableModel;
 
-import domain.Covid19Pacient;
+import observer.Covid19Pacient;
 
 
-public class ShowPacientTableGUI extends JFrame{
+public class ShowPacientTableGUI extends JFrame {
 	
 	JTable table;
 	Covid19Pacient pacient;
 	
   
-  public ShowPacientTableGUI(Covid19Pacient pacient ) {
+  public ShowPacientTableGUI(Covid19Pacient pacient) {
 	  	this.setTitle("Covid Symptoms "+pacient.getName());
 	  	
 	  	this.pacient=pacient;
-	  	
+	  	this.setSize(300, 200);
 	  	setFonts();
 	    
 	  	TableModel tm=new Covid19PacientTableModelAdapter(pacient);
@@ -29,8 +29,6 @@ public class ShowPacientTableGUI extends JFrame{
 	    pane.setPreferredSize(
 	      new java.awt.Dimension(300, 200));
 	    this.getContentPane().add(pane);
-	    
-	  
   }
 
   private static void setFonts() {
@@ -38,4 +36,5 @@ public class ShowPacientTableGUI extends JFrame{
     UIManager.put("Table.font", font);
     UIManager.put("TableHeader.font", font);
   }
+
 }

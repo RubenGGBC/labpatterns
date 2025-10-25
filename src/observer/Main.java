@@ -1,5 +1,7 @@
 package observer;
 
+import adapter2.ShowPacientTableGUI;
+
 import java.util.Observable;
 
 
@@ -17,6 +19,15 @@ public class Main {
         new PacientSymptomGUI(pacient2);
         new PacientThermometerGUI((Observable)pacient);
         new PacientThermometerGUI((Observable)pacient2);
+        ShowPacientTableGUI gui=new ShowPacientTableGUI(pacient);
+        gui.setPreferredSize(
+                new java.awt.Dimension(300, 200));
+        gui.setVisible(true);
+
+        ShowPacientTableGUI gui2=new ShowPacientTableGUI(pacient2);
+        gui2.setPreferredSize(
+                new java.awt.Dimension(300, 200));
+        gui2.setVisible(true);
     }
 
 

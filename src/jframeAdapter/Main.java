@@ -5,7 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import adapter2.Covid19PacientTableModelAdapter;
-import domain.Covid19Pacient;
+import observer.Covid19Pacient;
 import domain.Symptom;
 
 	public class Main {
